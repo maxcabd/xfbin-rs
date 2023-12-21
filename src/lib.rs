@@ -1,10 +1,9 @@
+pub mod nucc;
+
 use std::path::Path;
 use std::error::Error;   
 
-pub mod nucc;
-
 use crate::nucc::xfbin::Xfbin;
-
 
 // Use Path type to allow for platform compatibility
 pub fn read_xfbin(filepath: &Path) -> Result<Xfbin, Box<dyn Error>> {
@@ -13,23 +12,18 @@ pub fn read_xfbin(filepath: &Path) -> Result<Xfbin, Box<dyn Error>> {
     Ok(xfbin)
 }
 
-// Write xfbin
-
-
+/*fn write_xfbin(filepath: &Path, xfbin: &Xfbin) {
+}*/
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
-
     #[test]
     fn read_xfbin_test() {
         let xfbin = read_xfbin(Path::new("characode.bin.xfbin")).unwrap();
-   
-
-
         let nucc_binary_chunk = xfbin.get_chunk_by_type("nuccChunkBinary");
-        
+        dbg!(nucc_binary_chunk.len());
         
     }
 

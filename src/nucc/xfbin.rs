@@ -14,8 +14,6 @@ pub struct Xfbin {
     pub pages: Vec<Page>
 }
 
-
-
 // Custom read function for Xfbin
 impl Xfbin {
     pub fn read<R: std::io::Read + std::io::Seek>(mut reader: R) -> binrw::BinResult<Self>
@@ -55,7 +53,6 @@ impl Xfbin {
     
         Ok(xfbin)
     }
-
 
     pub fn get_chunk_by_type(&self, chunk_type: &str) -> Vec<&Chunk> {
         let mut chunks: Vec<&Chunk> = Vec::new();
@@ -125,7 +122,6 @@ pub struct NuccChunkTable {
     pub chunk_map_indices: Vec<u32>
 }
 
-
 #[binrw]
 #[derive(Debug, Clone)]
 pub struct ChunkMap {
@@ -133,7 +129,6 @@ pub struct ChunkMap {
     pub filepath_index: u32,
     pub chunk_name_index: u32,
 }
-
 
 #[binrw]
 #[derive(Debug, Clone)]
@@ -190,7 +185,7 @@ impl Chunk {
                 reader.read_exact(&mut bytes)?;
                 Ok(NuccChunkType::NuccBinary(bytes))
             }
-            
+
             _ => {
                 // Read the chunk data as a byte array
                 let mut bytes = vec![0; size as usize];
@@ -226,7 +221,6 @@ impl Page {
                 break;
             }
         }
-
 
         page.chunks = chunks;
 
