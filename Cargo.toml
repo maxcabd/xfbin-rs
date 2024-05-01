@@ -3,8 +3,33 @@ name = "xfbin"
 version = "0.1.0"
 edition = "2021"
 
+
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-#  used for reading and writing binary files
+# used for more comprehensive error handling
+anyhow = "1.0.44"
+
+# used for reading and writing binary files
 binrw = "0.10.0"
+
+# used for downcasting and type checking
+downcast-rs = "1.1.1"
+
+
+# better hashmap
+hashbrown = "0.11.2"
+
+# used for maintaining insertion order in maps
+indexmap = "1.7.0"
+
+itertools = "0.10.0"
+
+# used for serializing and deserializing
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.64"
+
+# used for converting enums to strings and back
+strum = "0.24"
+strum_macros = "0.24"
