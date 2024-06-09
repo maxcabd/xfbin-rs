@@ -314,8 +314,6 @@ impl From<Xfbin> for XfbinFile {
         let mut file_path_map = IndexMap::new();
         let mut chunk_name_map = IndexMap::new();
 
-        // TODO: Chunk references are written before chunk maps, which might affect the chunk names order in the final xfbin
-        // Correct order would be to write chunk maps first, update them with chunk references, and then write chunk references.
         let chunk_maps = struct_infos_map
             .clone()
             .into_iter()
